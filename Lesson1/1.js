@@ -12,3 +12,4 @@ function temp_far(temp_celce) {
 }
 
 console.log(temp_far(10));
+
