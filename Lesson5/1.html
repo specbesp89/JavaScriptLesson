@@ -1,0 +1,122 @@
+<!--1 Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию. -->
+<!--Доска должна быть разлинована соответствующим образом, -->
+<!--т.е. чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8,-->
+<!--столбцы – латинскими буквами A, B, C, D, E, F, G, H.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .desk {
+            width: 560px;
+            height: 560px;
+            border: 1px solid #888888;
+        }
+        .border {
+            display: flex;
+
+
+        }
+        .column-name {
+            display: flex;
+            padding-left: 30px;
+
+        }
+        .cell {
+            width: 70px;
+            height: 70px;
+            float: left;
+        }
+        .black-cell {
+            background: black;
+        }
+        .white-cell {
+            background: khaki;
+        }
+        .line-name {
+
+            width: 30px;
+
+        }
+        .column-name-cell {
+            width: 70px;
+            text-align: center;
+            font-size: large;
+        }
+        .line-name-cell {
+            height: 70px;
+            text-align: center;
+            font-family: "Times New Roman";
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <div class="div column-name"></div>
+    <div class="border">
+        <div class="line-name"> </div>
+        <div class="desk">  </div>
+
+    </div>
+
+
+
+
+<script>
+    'use strict';
+    function boardChess(){
+    let border = document.querySelector('.desk');
+    let cell = null;
+
+    let m = true
+    for (let i = 0; i <8; i++){
+        for (let x=0; x <8; x++) {
+            if (x == 0) m = !m;
+            cell = document.createElement('div');
+            if (m) cell.className = 'cell black-cell';
+            else cell.className = 'cell white-cell';
+            border.appendChild(cell);
+            m = !m;
+        }
+    }
+
+
+    }
+
+    function lineName(){
+        let lineName = document.querySelector('.line-name');
+        let cellLineName = null;
+        let m = 8;
+        for (let i=0; i <8; i++) {
+        cellLineName = document.createElement('div');
+        cellLineName.className = 'line-name-cell';
+        cellLineName.innerHTML = m--;
+        lineName.appendChild(cellLineName);
+        }
+    }
+    function columnName(){
+        let columnName = document.querySelector('.column-name');
+        let cellcolumnName = null;
+        let nameList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        for (let i=0; i <8; i++) {
+            cellcolumnName = document.createElement('div');
+            cellcolumnName.className = 'column-name-cell';
+            cellcolumnName.innerHTML = nameList[i]
+            columnName.appendChild(cellcolumnName);
+        }
+
+    }
+    boardChess();
+    lineName();
+    columnName();
+
+
+
+
+
+</script>
+</body>
+
+</html>
