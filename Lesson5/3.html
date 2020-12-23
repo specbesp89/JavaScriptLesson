@@ -1,0 +1,63 @@
+<!--3. Сделать генерацию корзины динамической: верстка корзины не должна находиться в HTML-структуре. -->
+<!--Там должен быть только div, в который будет вставляться корзина, сгенерированная на базе JS:-->
+<!--3.1. Пустая корзина должна выводить строку «Корзина пуста»;-->
+<!--3.2. Наполненная должна выводить «В корзине: n товаров на сумму m рублей».-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .basket {
+            font-family: 'Lobster', Georgia, Times, serif;
+            font-size: 30px;
+            line-height: 100px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="basket">
+
+
+    </div>
+
+
+<script>
+    'use strict';
+
+    let objBasket =  [{name:'Монитор', price:20000, count: 2}, {name:'Системный блок', price:55000, count: 1},{name:'мышка', price:300, count: 1}];
+    // let objBasket =  [];
+function countBasketPrice(obj){
+    let sum = 0
+    let countGoods = 0
+    for (let i = 0; i <obj.length; i++) {
+        sum += obj[i].price * obj[i].count;
+        countGoods +=  obj[i].count
+    }return 'Сумма товаров в корзине: ' + sum + ' Количество товара: ' + countGoods;
+}
+
+
+
+function backetCheck(obj){
+    var basket = document.querySelector('.basket');
+    if (obj.length === 0)
+        return basket.innerHTML = 'Корзина пуста';
+    else
+        return basket.innerHTML = countBasketPrice(obj);
+}
+
+backetCheck(objBasket);
+
+
+
+
+</script>
+
+</body>
+</html>
